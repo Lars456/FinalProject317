@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crado - Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+    <a href="index.html" class="logo">Crado</a>
+    <div>
+        <a href="about.html">About</a>
+        <a href="contact.html" id="authLink">Login</a>
+        <a href="cart.html">Cart</a>
+    </div>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="products" class="products">
+        <div class="product">
+            <img src="redboard.png" alt="Crado Chrome Board">
+            <h3>Crado Chrome Board</h3>
+            <p>Price: €70</p>
+            <button onclick="addToCart('Crado Chrome Board', '€70', 'redboard.png')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="ziphoddie.png" alt="Crado Full Zip Hoodie">
+            <h3>Crado Full Zip Hoodie</h3>
+            <p>Price: €100</p>
+            <button onclick="addToCart('Crado Full Zip Hoodie', '€100', 'ziphoddie.png')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="shirt.png" alt="Crado Logo T-Shirt">
+            <h3>Crado Logo T-Shirt</h3>
+            <p>Price: €40</p>
+            <button onclick="addToCart('Crado Logo T-Shirt', '€40', 'shirt.png')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="pinkboard.png" alt="Crado Pink Stars Board">
+            <h3>Crado Pink Stars Board</h3>
+            <p>Price: €70</p>
+            <button onclick="addToCart('Crado Pink Stars Board', '€70', 'pinkboard.png')">Add to Cart</button>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Default nav links already exist; this function updates them if necessary
+    function updateNav() {
+        fetch('/api/session') // Server-side endpoint to check login state
+            .then((response) => response.json())
+            .then((data) => {
+                const navLinks = document.getElementById('nav-links');
+                if (data.loggedIn) {
+                    // Update nav links for logged-in state
+                    navLinks.innerHTML = `
+                        <a href="about.html">About</a>
+                        <a href="/logout">Logout</a>
+                        <a href="cart.html">Cart</a>
+                    `;
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching session data:', error);
+                // Keep default nav if fetch fails
+            });
+    }
+
+    // Call updateNav on page load
+    document.addEventListener('DOMContentLoaded', updateNav);
+
+    // Function to add items to Local Storage
+    function addToCart(name, price, image) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve existing cart
+        cart.push({ name, price, image }); // Add new product details
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+        alert(`${name} has been added to your cart!`);
+    }
+
+    const authLink = document.getElementById('authLink');
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        authLink.textContent = 'Logout';
+        authLink.href = '#';
+        authLink.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'index.html';
+        });
+    }
+
+</script>
+
+<div class="youtube-video">
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/GTyQs_ogxD0" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="description">
+        <p>
+            Watch this amazing skateboarding session by Shredmaster and get inspired! Our boards are designed to help you push your limits.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Crado. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

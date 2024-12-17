@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crado - Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 80px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .cart-item h3, .cart-item p {
+            margin: 0;
+        }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .remove-btn:hover {
+            background-color: darkred;
+        }
+
+        .cart-empty {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        .checkout-btn:hover {
+            background-color: darkgreen;
+        }
+
+        .checkout-message {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+    <a href="index.html" class="logo">Crado</a>
+    <div>
+        <a href="about.html">About</a>
+        <a href="contact.html" id="authLink">Login</a>
+        <a href="cart.html">Cart</a>
+    </div>
+</nav>
+
+</header>
+
+<div class="container">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div id="total-price" class="total-price"></div>
+    <button id="checkout-btn" class="checkout-btn">Check Out</button>
+    <div id="checkout-message" class="checkout-message"></div>
+</div>
+
+<script>
+    // Function to display cart items from Local Storage
+    document.addEventListener("DOMContentLoaded", () => {
+        const cartContainer = document.getElementById("cart-items");
+        const totalPriceContainer = document.getElementById("total-price");
+        const checkoutMessageContainer = document.getElementById("checkout-message");
+        const checkoutButton = document.getElementById("checkout-btn");
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function displayCart() {
+            cartContainer.innerHTML = ""; // Clear the container
+            let totalPrice = 0; // Initialize total price
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p class='cart-empty'>Your cart is empty. Add products from the shop to see them here.</p>";
+                totalPriceContainer.innerHTML = ""; // Clear total price if cart is empty
+                checkoutButton.style.display = "none"; // Hide checkout button
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+
+                // Extract the numeric price and add to total
+                const price = parseFloat(item.price.replace(/[^\d.]/g, ""));
+                totalPrice += price;
+
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div>
+                        <h3>${item.name}</h3>
+                        <p>${item.price}</p>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(cartItem);
+            });
+
+            // Display total price
+            totalPriceContainer.innerHTML = `Total Price: €${totalPrice.toFixed(2)}`;
+            checkoutButton.style.display = "block"; // Show checkout button
+        }
+
+        // Function to remove an item from the cart
+        window.removeFromCart = (index) => {
+            cart.splice(index, 1); // Remove the item at the given index
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update Local Storage
+            displayCart(); // Re-render cart
+        };
+
+        // Function to handle checkout
+        checkoutButton.addEventListener("click", () => {
+            if (cart.length === 0) return;
+
+            let itemList = cart.map(item => `- ${item.name} (${item.price})`).join("<br>");
+            let totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price.replace(/[^\d.]/g, "")), 0);
+
+            checkoutMessageContainer.innerHTML = `
+                <p>You have been checked out!</p>
+                <p>Your Items:</p>
+                <p>${itemList}</p>
+                <p><strong>Total: €${totalPrice.toFixed(2)}</strong></p>
+            `;
+
+            // Clear the cart after checkout
+            localStorage.removeItem("cart");
+            cart = [];
+            displayCart();
+        });
+
+        displayCart(); // Initial rendering of the cart
+    });
+
+
+    const authLink = document.getElementById('authLink');
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        authLink.textContent = 'Logout';
+        authLink.href = '#';
+        authLink.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'cart.html';
+        });
+    }
+
+</script>
+
+<footer>
+    <p>&copy; 2024 Crado. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

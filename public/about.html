@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Crado</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; /* Subtle background color */
+            color: #333; /* Darker text color for contrast */
+        }
+
+        /* Header styles */
+        header {
+            background-color: #000; /* Black header */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a.logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #f39c12; /* Gold hover effect */
+        }
+
+        /* About section styles */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .container p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* About cards */
+        .about-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .about-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card img {
+    width: 140px; /* Increased size */
+    height: 140px; /* Match width for perfect circle */
+    border-radius: 50%; /* Keeps the image circular */
+    margin-bottom: 20px;
+    object-fit: cover; /* Ensures the image doesn't stretch */
+}
+
+
+        .about-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">Crado</a>
+    <nav>
+        <a href="about.html">About</a>
+        <a href="contact.html" id="authLink">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>About Crado</h1>
+    <p>Welcome to Crado, your go-to destination for premium skateboards and stylish apparel. At Crado, we combine quality craftsmanship with cutting-edge designs to help you ride in style. Whether you're a seasoned pro or just starting out, we've got something for everyone.</p>
+
+    <div class="about-cards">
+        <div class="about-card">
+            <img src="team.png" alt="Our Team">
+            <h3>Our Team</h3>
+            <p>A passionate group of skaters, designers, and dreamers working together to create the best products for you.</p>
+        </div>
+        <div class="about-card">
+            <img src="mission.png" alt="Our Mission">
+            <h3>Our Mission</h3>
+            <p>To inspire creativity and individuality through premium skateboards and stylish apparel.</p>
+        </div>
+        <div class="about-card">
+            <img src="quality.png" alt="Our Promise">
+            <h3>Our Promise</h3>
+            <p>Uncompromising quality and attention to detail in everything we create, just for you.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const authLink = document.getElementById('authLink');
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        authLink.textContent = 'Logout';
+        authLink.href = '#';
+        authLink.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'cart.html';
+        });
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 Crado. All rights reserved. | Designed with passion for skaters</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* Importing Google Fonts for Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #E6F7FF; /* Light blue background */
+    color: #000000; /* Black text for contrast */
+}
+
+/* Header */
+header {
+    background: #004080; /* Dark blue header background */
+    color: #FFFFFF; /* White text */
+    padding: 20px;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: #FFFFFF; /* White text */
+    text-decoration: none;
+    margin: 0 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative; /* For underline animation */
+    transition: color 0.3s ease;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Position underline slightly below the text */
+    width: 0;
+    height: 2px;
+    background-color: #80C1FF; /* Light blue underline */
+    transition: width 0.3s ease;
+}
+
+header nav a:hover {
+    color: #80C1FF; /* Lighter blue on hover */
+}
+
+header nav a:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+/* Main Container */
+.container {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Centered Content */
+.centered-content {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.logo-image {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Products Grid */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.product {
+    background: #FFFFFF; /* White cards */
+    color: #000000; /* Black text */
+    border: 2px solid #004080; /* Blue border */
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33% - 40px);
+    box-shadow: 0 4px 10px rgba(0, 64, 128, 0.2); /* Subtle blue shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #004080; /* Blue border for images */
+}
+
+.product h3 {
+    font-size: 1.5em;
+    margin: 15px 0;
+    color: #004080; /* Dark blue text */
+}
+
+.product p {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #333333;
+}
+
+.product button {
+    background-color: #004080; /* Blue background */
+    color: #FFFFFF; /* White text */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product button:hover {
+    background-color: #0066CC; /* Brighter blue on hover */
+    transform: translateY(-3px); /* Lift effect */
+}
+
+.product button:active {
+    background-color: #002855; /* Darker blue when pressed */
+    transform: translateY(0); /* Remove lift on click */
+}
+
+.product button:focus {
+    outline: 2px solid #80C1FF; /* Light blue focus outline */
+    outline-offset: 2px;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 64, 128, 0.3); /* Enhanced blue shadow */
+}
+
+/* Footer */
+footer {
+    background: #004080; /* Dark blue footer */
+    color: #FFFFFF; /* White text */
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* YouTube Video Section */
+.youtube-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Add spacing between video and description */
+    padding: 60px; /* Increase padding around the section */
+    background: #F0F8FF; /* Very light blue background */
+    border-top: 2px solid #004080;
+    border-bottom: 2px solid #004080;
+}
+
+.youtube-video .video-container {
+    border: 2px solid #004080; /* Blue border for the video */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3); /* Slight blue shadow */
+    overflow: hidden;
+    max-width: 600px; /* Restrict video width for better layout */
+    aspect-ratio: 16 / 9; /* Maintain video aspect ratio */
+}
+
+.youtube-video .video-container iframe {
+    border-radius: 10px;
+    width: 100%; /* Responsive width */
+    height: 100%; /* Responsive height */
+}
+
+.youtube-video .description {
+    max-width: 500px; /* Restrict width for readability */
+    padding: 30px; /* Add padding inside the description box */
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: #004080; /* Blue text */
+    line-height: 1.8; /* Increase line height for better spacing */
+    background: #FFFFFF;
+    border: 2px solid #004080; /* Add a matching blue border */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 64, 128, 0.2); /* Subtle shadow */
+}
