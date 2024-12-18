@@ -107,13 +107,13 @@
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         function displayCart() {
-            cartContainer.innerHTML = ""; // Clear the container
-            let totalPrice = 0; // Initialize total price
+            cartContainer.innerHTML = ""; 
+            let totalPrice = 0;
 
             if (cart.length === 0) {
                 cartContainer.innerHTML = "<p class='cart-empty'>Your cart is empty. Add products from the shop to see them here.</p>";
-                totalPriceContainer.innerHTML = ""; // Clear total price if cart is empty
-                checkoutButton.style.display = "none"; // Hide checkout button
+                totalPriceContainer.innerHTML = ""; 
+                checkoutButton.style.display = "none"; 
                 return;
             }
 
@@ -121,7 +121,7 @@
                 const cartItem = document.createElement("div");
                 cartItem.classList.add("cart-item");
 
-                // Extract the numeric price and add to total
+              
                 const price = parseFloat(item.price.replace(/[^\d.]/g, ""));
                 totalPrice += price;
 
@@ -168,7 +168,7 @@
             displayCart();
         });
 
-        displayCart(); // Initial rendering of the cart
+        displayCart(); 
     });
 
 
