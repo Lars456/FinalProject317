@@ -7,14 +7,14 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background: #E6F7FF; /* Light blue background */
-    color: #000000; /* Black text for contrast */
+    background: #E6F7FF; 
+    color: #000000; 
 }
 
 /* Header */
 header {
-    background: #004080; /* Dark blue header background */
-    color: #FFFFFF; /* White text */
+    background: #004080; 
+    color: #FFFFFF; 
     padding: 20px;
 }
 
@@ -39,10 +39,10 @@ header nav a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px; /* Position underline slightly below the text */
+    bottom: -5px; 
     width: 0;
     height: 2px;
-    background-color: #80C1FF; /* Light blue underline */
+    background-color: #80C1FF; 
     transition: width 0.3s ease;
 }
 
@@ -82,8 +82,8 @@ header nav a:hover::after {
 
 .product {
     background: #FFFFFF; /* White cards */
-    color: #000000; /* Black text */
-    border: 2px solid #004080; /* Blue border */
+    color: #000000; 
+    border: 2px solid #004080; 
     border-radius: 10px;
     padding: 20px;
     width: calc(33% - 40px);
@@ -157,9 +157,9 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px; /* Add spacing between video and description */
-    padding: 60px; /* Increase padding around the section */
-    background: #F0F8FF; /* Very light blue background */
+    gap: 40px; 
+    padding: 60px; 
+    background: #F0F8FF; 
     border-top: 2px solid #004080;
     border-bottom: 2px solid #004080;
 }
@@ -175,8 +175,8 @@ footer {
 
 .youtube-video .video-container iframe {
     border-radius: 10px;
-    width: 100%; /* Responsive width */
-    height: 100%; /* Responsive height */
+    width: 100%; 
+    height: 100%; 
 }
 
 .youtube-video .description {
