@@ -49,14 +49,14 @@
 </div>
 
 <script>
-    // Default nav links already exist; this function updates them if necessary
+   
     function updateNav() {
-        fetch('/api/session') // Server-side endpoint to check login state
+        fetch('/api/session') /
             .then((response) => response.json())
             .then((data) => {
                 const navLinks = document.getElementById('nav-links');
                 if (data.loggedIn) {
-                    // Update nav links for logged-in state
+                   
                     navLinks.innerHTML = `
                         <a href="about.html">About</a>
                         <a href="/logout">Logout</a>
@@ -75,9 +75,9 @@
 
     // Function to add items to Local Storage
     function addToCart(name, price, image) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve existing cart
-        cart.push({ name, price, image }); // Add new product details
-        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+        let cart = JSON.parse(localStorage.getItem("cart")) || []; 
+        cart.push({ name, price, image }); s
+        localStorage.setItem("cart", JSON.stringify(cart)); 
         alert(`${name} has been added to your cart!`);
     }
 
