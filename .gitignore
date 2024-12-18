@@ -1,0 +1,60 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+
+# VirtualBox
+*.vbox
+*.vbox-prev
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.nvram
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.out
+*.bak
+
+# Build artifacts
+dist/
+build/
+coverage/
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Others
+*.iml
+*.lock
+*.exe
+*.dll
+*.so
+*.dylib
