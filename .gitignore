@@ -47,7 +47,7 @@ build/
 coverage/
 *.log
 
-# Environment variables
+# Environment variable
 .env
 .env.*
 
