@@ -13,7 +13,6 @@ let db = new sqlite3.Database(DB_PATH, (err) => {
         console.error('Error connecting to the SQLite database:', err.message);
     } else {
         console.log('Connected to the SQLite database.');
-        // Create users table if it does not exist
         db.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT UNIQUE NOT NULL,
@@ -24,10 +23,10 @@ let db = new sqlite3.Database(DB_PATH, (err) => {
 
 app.use(bodyParser.json());
 
-// Serve static files from the "public" folder
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Registration endpoint
+
 app.post('/register', (req, res) => {
     const { email, password } = req.body;
 
